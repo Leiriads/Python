@@ -22,3 +22,8 @@ if __name__ == '__main__':
     main()
 
 
+# source venv/bin/activate
+
+# python manage.py runserver
+
+#proteção contra falsificação de formulario django csrf
