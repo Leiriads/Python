@@ -1,8 +1,8 @@
 # Python
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
-:sparkles: Adicionado validação de cadastro com token enviado por email,hash, token unico
-:sparkles: Adicionado painel de Login e Registro com validação de senha
+:sparkles: Adicionado validação de cadastro com token enviado por email,hash, token unico <br>
+:sparkles: Adicionado painel de Login e Registro com validação de senha e caracteres especiais
 
 ![nutrilab_valida](https://user-images.githubusercontent.com/89768557/215026543-4b7a3afc-4ee3-4aab-844a-ee0bf3274807.png)
 
