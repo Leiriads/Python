@@ -1,10 +1,13 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.messages import constants
-from .models import Pacientes
+from .models import Pacientes,DadosPaciente
+from datetime import datetime
+#graphic
+from django.views.decorators.csrf import csrf_exempt
 
 @login_required(login_url='/auth/login/')
 def patient(request):
@@ -16,7 +19,7 @@ def patient(request):
 
 
 
-        return render(request,'main.html')
+        
 
     elif request.method == "POST":
         
@@ -62,8 +65,95 @@ def patient(request):
             messages.add_message(request, constants.ERROR, 'Erro interno do sistema')
             return redirect('/patient/')
 
+
 @login_required(login_url='/auth/login/')
-def patient_data(request):
+def patient_data_list(request):
     if request.method == "GET":
         pacientes = Pacientes.objects.filter(nutri=request.user)
-        return render(request, 'patient_data.html', {'pacientes': pacientes})
+        return render(request, 'patient_data_list.html', {'pacientes': pacientes})
+
+
+@login_required(login_url='/auth/login/')
+def patient_data(request, id):
+    #se nao existe no banco retorna 404
+    
+    paciente = get_object_or_404(Pacientes,id=id)
+
+    if not paciente.nutri == request.user:
+        messages.add_message(request, constants.ERROR, 'Esse paciente não é seu')
+        return redirect('/patient_data/')
+        
+    if request.method == "GET":
+
+        dados_paciente = DadosPaciente.objects.filter(paciente=paciente)
+        return render(request, 'patient_data.html', {'paciente': paciente, 'dados_paciente': dados_paciente})
+
+    elif request.method == "POST":
+        peso = request.POST.get('peso')
+        altura = request.POST.get('altura')
+        gordura = request.POST.get('gordura')
+        musculo = request.POST.get('musculo')
+        hdl = request.POST.get('hdl')
+        ldl = request.POST.get('ldl')
+        colesterol_total = request.POST.get('ctotal')
+        triglicerídios = request.POST.get('triglicerídios')
+
+        if (len(peso.strip()) == 0) or (len(altura.strip()) == 0) or (len(gordura.strip()) == 0) or (len(musculo.strip()) == 0) or (len(hdl.strip()) == 0) or (len(ldl.strip()) == 0) or (len(colesterol_total.strip()) == 0) or (len(triglicerídios.strip()) == 0):
+            messages.add_message(request, constants.ERROR, 'Preencha todos os campos')
+            return redirect('/patient_data/')
+   
+        elif not peso.isnumeric():
+            messages.add_message(request, constants.ERROR, 'Preencha o campo Peso corretamente!')
+            return redirect('/patient_data/')
+        elif not altura.isnumeric():
+            messages.add_message(request, constants.ERROR, 'Preencha o campo Altura corretamente!')
+            return redirect('/patient_data/')
+        elif not gordura.isnumeric():
+            messages.add_message(request, constants.ERROR, 'Preencha o campo Gordura corretamente!')
+            return redirect('/patient_data/')
+        elif not musculo.isnumeric():
+            messages.add_message(request, constants.ERROR, 'Preencha o campo Musculo corretamente!')
+            return redirect('/patient_data/')
+        elif not hdl.isnumeric():
+            messages.add_message(request, constants.ERROR, 'Preencha o campo Hdl corretamente!')
+            return redirect('/patient_data/')
+        elif not ldl.isnumeric():
+            messages.add_message(request, constants.ERROR, 'Preencha o campo Ldl corretamente!')
+            return redirect('/patient_data/')
+        elif not colesterol_total.isnumeric():
+            messages.add_message(request, constants.ERROR, 'Preencha o campo Colesterol corretamente!')
+            return redirect('/patient_data/')
+        elif not triglicerídios.isnumeric():
+            messages.add_message(request, constants.ERROR, 'Preencha o campo Triglicerídios corretamente!')
+            return redirect('/patient_data/')
+        
+        paciente = DadosPaciente(paciente=paciente,
+                data=datetime.now(),
+                peso=peso,
+                altura=altura,
+                percentual_gordura=gordura,
+                percentual_musculo=musculo,
+                colesterol_hdl=hdl,
+                colesterol_ldl=ldl,
+                colesterol_total=colesterol_total,
+                trigliceridios=triglicerídios)
+
+        paciente.save()
+
+        messages.add_message(request, constants.SUCCESS, 'Dados cadastrado com sucesso')
+
+        return redirect('/patient_data/')
+
+
+@login_required(login_url='/auth/login/')
+@csrf_exempt
+def graphic_kg(request, id):
+    paciente = Pacientes.objects.get(id=id)
+    #ordenando os pesos pela data
+    dados = DadosPaciente.objects.filter(paciente=paciente).order_by("data")
+    #cria uma lista de pesos
+    pesos = [dado.peso for dado in dados]
+    labels = list(range(len(pesos)))
+    data = {'peso': pesos,
+            'labels': labels}
+    return JsonResponse(data)
