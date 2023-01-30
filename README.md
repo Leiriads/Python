@@ -1,8 +1,11 @@
 # Python
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
+
+:sparkles: Adicionado Cadastro de Pacientes para cada Nutricionista
 :sparkles: Adicionado validação de cadastro com token enviado por email,hash, token unico <br>
 :sparkles: Adicionado painel de Login e Registro com validação de senha e caracteres especiais
+
 
 ![nutrilab_dados_paciente](https://user-images.githubusercontent.com/89768557/215381320-920882b8-da1b-4dd7-bdd7-536a67ecb1bc.png)
 
