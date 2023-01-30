@@ -1,6 +1,7 @@
 # Python
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
+:construction: Plano Alimentar <br>
 :sparkles: Adicionado Grafico Linear gerado apartir do peso do Paciente <br>
 :sparkles: Adicionado Dados de cada paciente <br>
 :sparkles: Adicionado Cadastro de Pacientes para cada Nutricionista <br>
