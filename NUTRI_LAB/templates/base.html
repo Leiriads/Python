@@ -14,6 +14,13 @@
 {% if user.is_authenticated %}
       <nav style="background-color: #27DB8F;" class="navbar navbar-expand-lg navbar-dark">
         <a style="font-weight: bold" class="navbar-brand" href="#">NUTRI LAB</a>
+          
+
+        <div class="align-self-end ml-auto">
+            <a href = {% url 'quit' %}> <button type="button" class="btn btn-danger">Sair </button> </a>
+        </div>
+
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button> 

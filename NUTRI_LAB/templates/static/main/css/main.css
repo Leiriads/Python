@@ -8,7 +8,14 @@
     text-decoration: none;
     text-align: center;
     box-shadow: 5px 5px 5px gray;
+    border-radius: 30px;
+   
 
+}
+
+.card-lateral:hover{
+    background-color: #20ad72;
+    transition: background .6s;
 }
 
 .link-lateral:hover{
@@ -17,19 +24,31 @@
 
 .titulo{
 
-    color: #27DB8F;
+    text-align: center;
+    color: #ffffff;
+    
+    border-radius: 10px;
+    background-color: #27DB8F;
+   
 
 }
 
 .card-paciente{
 
-    background-color: #EAEAEA;
+    background-color: #c5eedd;
     width: 80%;
     box-shadow: 3px 3px 3px gray;
     padding: 20px;
     color: black;
+    border-radius: 10px;
+    transition: background .6s;
+    
 
 }
+.card-paciente:hover{
+    background-color: #27DB8F;
+}
+
 
 .link-hover:hover{
     text-decoration: none;
@@ -41,11 +60,13 @@
 
 .dados{
     font-weight: bold;
+    text-align: center;
 }
 
 .descricao{
 
     margin-left: -12%;
+    
 
 }
 
@@ -59,3 +80,4 @@
     }
 
 }
+

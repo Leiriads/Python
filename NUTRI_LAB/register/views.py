@@ -80,7 +80,7 @@ def login(request):
         return redirect('/auth/login')
     else:
         auth.login(request, usuario)
-        return redirect('/')
+        return redirect('/patient')
 
 
 def quit(request):

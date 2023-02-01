@@ -4,7 +4,7 @@ from django.http import HttpResponse,JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.messages import constants
-from .models import Pacientes,DadosPaciente
+from .models import Pacientes,DadosPaciente,Refeicao,Opcao
 from datetime import datetime
 #graphic
 from django.views.decorators.csrf import csrf_exempt
@@ -157,3 +157,72 @@ def graphic_kg(request, id):
     data = {'peso': pesos,
             'labels': labels}
     return JsonResponse(data)
+
+
+def food_plan_list(request):
+    if request.method == "GET":
+        pacientes = Pacientes.objects.filter(nutri=request.user)
+        return render(request, 'food_plan_list.html', {'pacientes': pacientes})
+
+
+def food_plan(request, id):
+    paciente = get_object_or_404(Pacientes, id=id)
+    if not paciente.nutri == request.user:
+        messages.add_message(request, constants.ERROR, 'Esse paciente não é seu')
+        return redirect('/food_plan/')
+
+    if request.method == "GET":
+
+        #ordenando as refeições pelo horario
+        r1 = Refeicao.objects.filter(paciente=paciente).order_by('horario')
+        #opções
+        opcao = Opcao.objects.all()
+
+        return render(request, 'food_plan.html', {'paciente': paciente,'refeicao':r1,'opcao':opcao})
+
+
+
+
+def food(request, id_paciente):
+    paciente = get_object_or_404(Pacientes, id=id_paciente)
+    if not paciente.nutri == request.user:
+        messages.add_message(request, constants.ERROR, 'Esse paciente não é seu')
+        return redirect('/patient_data/')
+
+    if request.method == "POST":
+        titulo = request.POST.get('titulo')
+        horario = request.POST.get('horario')
+        carboidratos = request.POST.get('carboidratos')
+        proteinas = request.POST.get('proteinas')
+        gorduras = request.POST.get('gorduras')
+
+        r1 = Refeicao(paciente=paciente,
+                      titulo=titulo,
+                      horario=horario,
+                      carboidratos=carboidratos,
+                      proteinas=proteinas,
+                      gorduras=gorduras)
+
+        r1.save()
+
+        messages.add_message(request, constants.SUCCESS, 'Refeição Cadastrada')
+        return redirect(f'/food_plan/{id_paciente}')
+
+
+def options(request, id_paciente):
+     if request.method == "POST":
+
+        id_refeicao = request.POST.get('refeicao')
+        #tipo arquivo recebe atraves do files
+        # no html precisa ter o enctype='multipart/form-data p/ o formulario enviar arquivos
+        imagem = request.FILES.get('imagem')
+        descricao = request.POST.get("descricao")
+
+        o1 = Opcao(refeicao_id=id_refeicao,
+                   imagem=imagem,
+                   descricao=descricao)
+
+        o1.save()
+
+        messages.add_message(request, constants.SUCCESS, 'Opcao Cadastrada !')
+        return redirect(f'/food_plan/{id_paciente}')

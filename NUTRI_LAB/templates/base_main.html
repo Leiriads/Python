@@ -4,6 +4,7 @@
 {% load static %}
 {% block 'head' %}
 <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/food_plan.css' %}">
 {% endblock %}
 
 
@@ -17,7 +18,7 @@
                     <br>
                     <br>
 
-                    <h3>Gerenciar Pacientes</h3>
+                    <h3>Gerenciar Paciente</h3>
                 </div>
                 </a>
 
@@ -26,12 +27,11 @@
                     <img src="{% static 'main/img/dados_paciente.png' %}">
                     <br>
                     <br>
-
-                    <h3>Dados do Pacientes</h3>
+                    <h3>Dados do Paciente</h3>
                 </div>
                 </a>
 
-                <a href="#" class="link-lateral">
+                <a href="{% url 'food_plan_list' %}" class="link-lateral">
                 <div class="card-lateral">
                     <img src="{% static 'main/img/plano_alimentar.png' %}">
                     <br>
@@ -45,11 +45,12 @@
 
             <div class="col-md-8">
                 {% block 'main' %}
-
+                    
 
                 {% endblock %}
+                
             </div>
-
+            
         </div>
     </div>
 {% endblock%}

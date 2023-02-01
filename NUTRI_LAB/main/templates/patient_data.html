@@ -16,11 +16,15 @@
     <div class="row">
 
         <div class="col-md-3">
-            <img src="{% static 'main/img/perfil1.png' %}">
+            {% if paciente.sexo == "M"%}
+                <img src="{% static 'main/img/perfil2.png' %}">
+            {% else %}
+                <img src="{% static 'main/img/perfil1.png' %}">
+            {% endif %}
         </div>
 
-        <div class="col-md-3 dados descricao">
-            <h4>{{paciente.nome}}</h4>
+        <div class="col-md-3-d-flex justify-content-center dados descricao">
+            <h4><br>{{paciente.nome}}</h4>
             <h6>{{paciente.idade}} Anos</h6>
         </div>
         
