@@ -1,6 +1,7 @@
 # Python
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
+
 :sparkles: Plano Alimentar, tabelas criadas (bd) <br>
 :sparkles: Adicionado Grafico Linear gerado apartir do peso do Paciente <br>
 :sparkles: Adicionado Dados de cada paciente <br>
@@ -8,6 +9,7 @@
 :sparkles: Adicionado validação de cadastro com token enviado por email,hash, token unico <br>
 :sparkles: Adicionado painel de Login e Registro com validação de senha e caracteres especiais
 
+![nutrilab_dieta](https://user-images.githubusercontent.com/89768557/215983413-3ae6b742-5878-4bd0-9dc3-ca40ae034624.png)
 
 ![nutrilab_cadastrar_opcao](https://user-images.githubusercontent.com/89768557/215983281-6fdc197f-af26-4263-91f3-453078aa9506.png)
 
