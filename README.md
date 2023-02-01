@@ -9,6 +9,10 @@
 :sparkles: Adicionado painel de Login e Registro com validação de senha e caracteres especiais
 
 
+![nutrilab_cadastrar_opcao](https://user-images.githubusercontent.com/89768557/215983281-6fdc197f-af26-4263-91f3-453078aa9506.png)
+
+![nutrilab_cadastrar_dieta](https://user-images.githubusercontent.com/89768557/215983251-5bd966c6-9313-451a-a29f-98e29163beff.png)
+
 ![nutrilab_plano alimentar1](https://user-images.githubusercontent.com/89768557/215981986-a28bb004-e706-4818-9552-aecb40ace0e9.png)
 
 ![nutrilab_grafico_paciente](https://user-images.githubusercontent.com/89768557/215381140-2a7b420d-27cc-4396-be72-2120553ff590.png)
