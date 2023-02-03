@@ -11,6 +11,8 @@
 
 ![nutrilab_dieta](https://user-images.githubusercontent.com/89768557/215983413-3ae6b742-5878-4bd0-9dc3-ca40ae034624.png)
 
+  :sparkles: Adicionado Dentro do Plano alimentar, Cadastrar nova opção (ex: descrição da comida junto com o upload de imagem) <br>
+
 ![nutrilab_cadastrar_opcao](https://user-images.githubusercontent.com/89768557/215983281-6fdc197f-af26-4263-91f3-453078aa9506.png)
 
   :sparkles: Adicionado Dentro do Plano alimentar, Cadastrar nova refeição <br>
