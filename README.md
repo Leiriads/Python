@@ -5,7 +5,8 @@
 
 
 
-:construction: Em desenvolvimento : Botão de Deletar paciente
+:sparkles: Botão de Deletar paciente
+![nutrilab_deletar](https://user-images.githubusercontent.com/89768557/216883858-34d43a32-96bb-45b4-8aff-ebce5c8f6bd6.png)
 
 
 
