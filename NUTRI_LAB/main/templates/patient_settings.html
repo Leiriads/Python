@@ -109,7 +109,11 @@
                   <div class="row">
 
                       <div class="col-md-3">
-                          <img src="{% static 'main/img/perfil2.png' %}">
+                            {% if paciente.sexo == "M"%}
+                                <img src="{% static 'main/img/perfil2.png' %}">
+                            {% else %}
+                                <img src="{% static 'main/img/perfil1.png' %}">
+                            {% endif %}
                       </div>
                
                       <div class="col-md-9">
@@ -123,8 +127,14 @@
                   <br>
                   <label>Sexo:</label>
                   <select name="sexo" class="form-control" value="{{paciente.sexo}}">
-                      <option value="M">Masculino</option>
-                      <option value="F">Feminino</option>
+                       {% if paciente.sexo == "M"%}
+                            <option value="M">Masculino</option>
+                            <option value="F">Feminino</option>
+                        {% else %}
+                            <option value="F">Feminino</option>
+                            <option value="M">Masculino</option>
+                        {% endif %}
+  
                   </select>
 
                   <br>

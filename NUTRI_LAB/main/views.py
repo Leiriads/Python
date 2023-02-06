@@ -11,6 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from django.contrib import auth
 
+from .forms import PacienteForm
 
 @login_required(login_url='/auth/login/')
 def patient(request):
@@ -263,34 +264,38 @@ def edit_patient(request,id):
         messages.add_message(request, constants.ERROR, 'Esse paciente não é seu')
         return redirect('/patient_data/')
 
-  
-    
     if request.method == "POST":
-
+        paciente = Pacientes.objects.get(id=id)
         novo_nome = request.POST.get('nome')
         novo_sexo = request.POST.get('sexo')
         novo_idade = request.POST.get('idade')
         novo_email = request.POST.get('email')
         novo_telefone = request.POST.get('telefone')
-        print(novo_nome)
-        try:
-            paciente = Pacientes(nome = novo_nome,
-                                sexo = novo_sexo,
-                                idade = novo_idade,
-                                email = novo_email,
-                                telefone = novo_telefone,
-                                nutri = request.user)
-            paciente.save()
-            
-            
+        
+        
+        try: 
+            paciente = Pacientes.objects.get(id=id)
 
+            paciente.nome= novo_nome
+            paciente.sexo = novo_sexo
+            paciente.idade = novo_idade
+            paciente.email = novo_email
+            paciente.telefone = novo_telefone
+         
+            paciente.save()
             messages.add_message(request, constants.SUCCESS, 'Paciente Alterado com sucesso')
             return redirect('/patient/')
         except:
             messages.add_message(request, constants.ERROR, 'Erro interno do sistema')
             return redirect('/patient/')
 
-
-
-
     return
+
+
+def create_patiente(request):
+    form = PacienteForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('patient')
+    return render(request,'main.html',{'form':form})

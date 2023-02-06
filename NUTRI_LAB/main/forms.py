@@ -1,7 +1,7 @@
 from django import forms
-from .models import Pacientes,DadosPaciente
+from .models import Pacientes
 
-class PacienteForm(forms.Modelform):
+class PacienteForm(forms.ModelForm):
     class Meta:
         model = Pacientes
         fields = "__all__"
