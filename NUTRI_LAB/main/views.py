@@ -9,17 +9,14 @@ from datetime import datetime
 #graphic
 from django.views.decorators.csrf import csrf_exempt
 
+from django.contrib import auth
+
+
 @login_required(login_url='/auth/login/')
 def patient(request):
     if request.method == "GET":
-
         pacientes = Pacientes.objects.filter(nutri=request.user)
         return render(request, 'main.html', {'pacientes': pacientes})
-
-
-
-
-        
 
     elif request.method == "POST":
         
@@ -46,7 +43,6 @@ def patient(request):
         if pacientes.exists():
             messages.add_message(request, constants.ERROR, 'Já existe um paciente com esse E-mail')
             return redirect('/patient/')
-
 
 
         try:
@@ -226,3 +222,75 @@ def options(request, id_paciente):
 
         messages.add_message(request, constants.SUCCESS, 'Opcao Cadastrada !')
         return redirect(f'/food_plan/{id_paciente}')
+
+
+
+
+@login_required(login_url='/auth/login/')
+def config_patient(request, id):
+    paciente = get_object_or_404(Pacientes, id=id)
+    if not paciente.nutri == request.user:
+        messages.add_message(request, constants.ERROR, 'Esse paciente não é seu')
+        return redirect('/patient/')
+
+
+    if request.method == "GET":
+
+        return render(request, 'patient_settings.html', {'paciente': paciente})
+    
+
+    elif request.method == "POST":
+    
+        username = request.POST.get('usuario')
+        senha = request.POST.get('senha')
+        usuario = auth.authenticate(username=username, password=senha)
+
+    if not usuario:
+        messages.add_message(request, constants.ERROR, 'Usuário ou senha inválidas')
+        return redirect(f'/config_patient/{id}')
+    else:
+        auth.login(request, usuario)
+        messages.add_message(request, constants.SUCCESS, 'Paciente Deletado com Sucesso!')
+        paciente.delete();
+
+        return redirect('/patient')
+
+
+@login_required(login_url='/auth/login/')
+def edit_patient(request,id):
+    paciente = get_object_or_404(Pacientes, id=id)
+    if not paciente.nutri == request.user:
+        messages.add_message(request, constants.ERROR, 'Esse paciente não é seu')
+        return redirect('/patient_data/')
+
+  
+    
+    if request.method == "POST":
+
+        novo_nome = request.POST.get('nome')
+        novo_sexo = request.POST.get('sexo')
+        novo_idade = request.POST.get('idade')
+        novo_email = request.POST.get('email')
+        novo_telefone = request.POST.get('telefone')
+        print(novo_nome)
+        try:
+            paciente = Pacientes(nome = novo_nome,
+                                sexo = novo_sexo,
+                                idade = novo_idade,
+                                email = novo_email,
+                                telefone = novo_telefone,
+                                nutri = request.user)
+            paciente.save()
+            
+            
+
+            messages.add_message(request, constants.SUCCESS, 'Paciente Alterado com sucesso')
+            return redirect('/patient/')
+        except:
+            messages.add_message(request, constants.ERROR, 'Erro interno do sistema')
+            return redirect('/patient/')
+
+
+
+
+    return

@@ -1,0 +1,159 @@
+{% extends 'base_main.html' %}
+{% load static %}
+
+{% block 'main' %}
+
+    {% if messages %}
+        <br>
+        {% for message in messages %}
+            <div class="alert {{message.tags}}">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <br>
+
+    <div class="row">
+
+        <div class="col-md-3">
+                {% if paciente.sexo == "M"%}
+                    <img src="{% static 'main/img/perfil2.png' %}">
+                {% else %}
+                    <img src="{% static 'main/img/perfil1.png' %}">
+                {% endif %}
+        </div>
+
+        <div class="col-md-3-d-flex justify-content-center dados descricao">
+            <h4><br>{{paciente.nome}}</h4>
+            <h6>{{paciente.idade}} Anos</h6>
+        </div>
+        
+    </div>
+    <hr>
+        <br>
+<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modal">
+  Editar Informações
+</button>
+
+<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#modal2">
+  Deletar paciente
+</button>
+
+
+<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title titulo" id="exampleModalLabel">Deletar paciente</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          
+          <div class="modal-body">
+              <form action="{% url 'config_patient' paciente.id %}" method="POST"> {% csrf_token %}
+
+
+                  <div class="row">
+
+                    <div class="col-md-3">
+                        {% if paciente.sexo == "M"%}
+                            <img src="{% static 'main/img/perfil2.png' %}">
+                        {% else %}
+                            <img src="{% static 'main/img/perfil1.png' %}">
+                        {% endif %}
+                    </div>
+
+                      <div class="col-md-9">
+                            <h4><br>{{paciente.nome}}</h4>
+                            <h6>{{paciente.idade}} Anos</h6>
+                      </div>
+
+                  </div>
+                   <label>Por favor Confirme seu usuário :</label>
+                  <input type="text" placeholder="******" class="form-control" name="usuario">
+                  <br>
+                  <label>Por favor Confirme sua senha :</label>
+                  <input type="password" placeholder="******" class="form-control" name="senha">
+                  <br>
+
+                  <input type="submit" class="btn btn-success btn-lg" value="Deletar">
+              
+              </form>
+
+          </div>
+      
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title titulo" id="exampleModalLabel">Editar paciente</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          
+          <div class="modal-body">
+            
+            
+              <form action="{% url 'edit_patient' paciente.id%}" method="POST"> {% csrf_token %}
+                  <div class="row">
+
+                      <div class="col-md-3">
+                          <img src="{% static 'main/img/perfil2.png' %}">
+                      </div>
+               
+                      <div class="col-md-9">
+                          <label>Nome:</label>
+                          <input type="text" class="form-control" name="nome"value="{{paciente.nome}}">
+                      </div>
+                
+
+                  </div>
+
+                  <br>
+                  <label>Sexo:</label>
+                  <select name="sexo" class="form-control" value="{{paciente.sexo}}">
+                      <option value="M">Masculino</option>
+                      <option value="F">Feminino</option>
+                  </select>
+
+                  <br>
+
+                  <label>Idade:</label>
+                  <input type="number" placeholder="0" class="form-control" name="idade" value="{{paciente.idade}}">
+                  
+                  <br>
+                  
+                  <label>E-mail:</label>
+                  <input type="email" placeholder="exemplo@email.com" class="form-control" name="email" value="{{paciente.email}}">   
+
+                  <br>
+                  
+                  <label>Telefone:</label>
+                  <input type="text" placeholder="+55 (00) 00000-0000" class="form-control" name="telefone" value="{{paciente.telefone}}">
+                  <br>
+                  <input type="submit" class="btn btn-success btn-lg" value="Registrar">
+              
+              </form>
+            
+          </div>
+      
+      </div>
+  </div>
+</div>
+
+
+
+
+
+{% endblock%}

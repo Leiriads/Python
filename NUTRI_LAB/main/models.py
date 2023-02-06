@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Pacientes(models.Model):
+    
     choices_sexo = (('F', 'Feminino'),
                     ('M', 'Maculino'))
     nome = models.CharField(max_length=50)

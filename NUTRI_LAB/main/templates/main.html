@@ -25,14 +25,12 @@
 </button>
 
 
-
-
 <br>
 <br>
 <div  class="row">
     {% for paciente in pacientes %}
     <div class="col-md-4">
-        <a href="#" class="link-hover">
+        <a href="{% url 'config_patient' paciente.id %}" class="link-hover">
             <div class="card-paciente">
                 <div class="foto-perfil">
                 
@@ -53,11 +51,6 @@
     {% endfor %}
     
 </div>
-
-
-
-
-
 
 
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -113,12 +106,15 @@
               
               </form>
 
-
           </div>
       
       </div>
   </div>
 </div>
+
+
+
+
 
 
 {% endblock%}
