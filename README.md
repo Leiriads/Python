@@ -10,6 +10,7 @@
 
 
 
+:sparkles: Resumo das refeições cadastradas para o paciente
 ![nutrilab_dieta](https://user-images.githubusercontent.com/89768557/215983413-3ae6b742-5878-4bd0-9dc3-ca40ae034624.png)
 
   :sparkles: Adicionado Dentro do Plano alimentar, Seleciona um tipo de refeição cadastrada e insere novas informações (ex: descrição da comida junto com o upload de imagem) <br>
