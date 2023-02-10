@@ -53,7 +53,7 @@ def register(request):
             path_template = os.path.join(settings.BASE_DIR, 'register/templates/emails/cadastro_confirmado.html')
             email_html(path_template, 'Cadastro confirmado', [email,], username=usuario, link_ativacao=f"127.0.0.1:8000/auth/activate_account/{token}")
 
-            messages.add_message(request,constants.SUCCESS,'Usuário Cadastrado com sucesso')
+            messages.add_message(request,constants.SUCCESS,'Usuário Cadastrado com sucesso, Acesse seu email para ativar sua conta.')
             return redirect('/auth/login')
             
         except:
