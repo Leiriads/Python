@@ -1,0 +1,51 @@
+{% extends "bases/base_evento.html" %}
+{% load static %}
+
+{% block 'importacoes' %}
+    <link href="{% static 'evento/css/gerenciar_evento.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block 'conteudo' %}
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-md">
+                <form action="{% url 'gerenciar_evento'%}" method="GET">
+                <label>Título:</label>
+                <input type="text" placeholder="Título..." class="form-control" name="nome">
+            </div>
+
+            <div class="col-md">
+                <br>
+                <input type="submit" class="btn-principal" value="filtrar">
+                </form>
+            </div>
+
+        </div>
+        <table>
+            <tr>
+                <th>Logo</th>
+                <th>Título</th>
+                <th>Descrição</th>
+                <th>Início</th>
+                <th>Término</th>
+                <th>Link de inscrição</th>
+            </tr>
+            
+            {% for evento in eventos %}
+            <tr class="{% cycle 'linha' 'linha2' %}">
+                <td width="10%"><a href="{% url 'participantes_evento' evento.id %}"><img width="100%" src="/media/{{evento.logo}}"></a></td>
+                <td>{{evento.nome}}</td>
+                <td>{{evento.descricao}}</td>
+                <td>{{evento.data_inicio}}</td>
+                <td>{{evento.data_termino}}</td>
+                <td><a href="http://127.0.0.1:8000/eventos/inscrever_evento/{{evento.id}}/ ">Link  </a> <br> 127.0.0.1:8000/eventos/inscrever_evento/{{evento.id}}/  </td>
+                
+            </tr>
+            {% endfor %}
+                
+        </table>
+
+    </div>
+
+{% endblock %}

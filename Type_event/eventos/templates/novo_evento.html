@@ -1,0 +1,61 @@
+{% extends "bases/base_evento.html" %}
+
+
+{% block 'conteudo' %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <br>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert {{ message.tags }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+                <br>
+                <h3>Novo evento</h3>
+                <form action="{% url 'novo_evento' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    <label>Nome evento</label>
+                    <input type="text" name="nome" class="form-control" placeholder="Nome...">
+                    <br>
+                    <label>Descrição</label>
+                    <textarea name="descricao" class="form-control" placeholder="Descrição..."></textarea>
+                    <br>
+                    <div class="row">
+                        <div class="col-md">
+                            <label>Data início</label>
+                            <input type="date" name="data_inicio" class="form-control">
+                        </div>
+                        <div class="col-md">
+                            <label>Data término</label>
+                            <input type="date" name="data_termino" class="form-control">
+                        </div>
+                    </div>
+                    <br>
+                    <label>Carga horária (em horas)</label>
+                    <input type="number" name="carga_horaria" class="form-control" placeholder="X horas">
+                    <br>
+                    <label>Logo do evento</label>
+                    <input type="file" name="logo" class="form-control">
+                
+            </div>
+
+            <div style="z-index: 99999" class="col-md">
+                <br>
+                <br>
+                <h3>Paleta de cores</h3>
+                <br>
+                <input type="color" name="cor_principal" value="#15773b"> <span>Cor principal</span>
+                <br>
+                <input type="color" name="cor_secundaria" value="#14e9e9"> <span>Cor secundária</span>
+                <br>
+                <input type="color" name="cor_fundo" value="#020202"> <span>Cor de fundo</span>
+                <br>
+                <br>
+                <input type="submit" class="btn-principal" value="Criar evento">
+                </form>
+            </div>
+            <form>
+        </div>
+    </div>
+
+{% endblock %}

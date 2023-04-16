@@ -1,0 +1,72 @@
+{% extends "bases/base_evento.html" %}
+{% load static %}
+
+{% block 'importacoes' %}
+    <link href="{% static 'evento/css/gerenciar_evento.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block 'conteudo' %}
+    <div class="container">
+        <br>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <br>
+        <div class="row">
+            <div class="col-md-2">
+                <img width="100%" src="/media/{{evento.logo}}">
+                <br>
+                <br>
+                <h3>{{evento.nome}}</h3>
+                
+            </div>
+
+            <div class="col-md">
+                <div class="row">
+                    <div class="col-md-2">
+                        <span class="badge rounded-pill text-bg-danger"><a class="link" href="">Participantes</a></span>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="badge rounded-pill text-bg-danger"><a class="link" href="">Certificados</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <h5>{{evento.participantes.all.count}} Participantes</h5>
+            
+            <div class="col-md-4">
+                <table>
+                    <tr>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                    </tr>
+                    {% for participante in participantes %}
+                        <tr class="{% cycle 'linha' 'linha2' %}">
+                            <td>{{participante.username}}</td>
+                            <td>{{participante.email}}</td>
+                        </tr>
+                    {% endfor %}       
+                </table>
+                <br>
+                <div class="row">
+                    <div class="col-md text-center">
+                        <p>X de Z</p>
+                    </div>
+
+                    <div class="col-md ">
+                        <a href="{% url 'gerar_csv' evento.id%}" class="btn-principal" style="text-decoration: none;">Exportar CSV</a>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        
+        
+    </div>
+
+{% endblock %}

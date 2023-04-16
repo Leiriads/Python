@@ -1,0 +1,39 @@
+{% extends 'bases/base_evento.html' %}
+
+
+{% block 'conteudo' %}
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                 {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert {{ message.tags }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+                <img width="100%" src="{{evento.logo.url}}">
+                <br>
+                <br>
+                <h3>{{evento.nome}}</h3>
+            </div>
+            <hr>
+
+            <div class="col-md-6">
+                <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</h5>
+                <br>
+                <p>{{evento.data_inicio}} a {{evento.data_termino}}</p>
+
+                {% if request.user in evento.participantes.all %}
+                    <input style="border-color: green;" type="submit" class="btn-principal" value="JÁ ESTÁ PARTICIPANDO" disabled>
+                {% else%}
+                    <form action="{% url 'inscrever_evento' evento.id %}" method="POST">{% csrf_token %}
+                        <input type="submit" class="btn-principal" value="QUERO PARTICIPAR">
+                    </form>
+                {% endif %}
+               
+            
+            </div>
+        </div>
+    </div>
+{% endblock %}

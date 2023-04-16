@@ -1,0 +1,16 @@
+.navbar-color{
+    background-color: #201F1F !important;
+}
+
+body{
+    background-color: #1C1A1A;
+}
+
+
+
+.fundo-pagina{
+    background-image: url('/static/evento/img/fundo_pagina.png');
+    height: 300px;
+    background-size: cover;
+    
+}
