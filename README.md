@@ -3,6 +3,19 @@
 
 :sparkles: Type_events <br>
 <br>
+
+<br>
+:sparkles: Painel de Login <br>
+<br>
+
+![typelogin](https://user-images.githubusercontent.com/89768557/232322161-e396e7eb-9b54-4f87-9a01-74214510df55.png)
+
+<br>
+
+
+:sparkles: Painel de Registro <br>
+<br>
+
 ![type](https://user-images.githubusercontent.com/89768557/232321790-14ff40ad-3f66-4c8c-800c-cace9e463509.png)
 
 
