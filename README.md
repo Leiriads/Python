@@ -1,11 +1,17 @@
 # Python
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
+:sparkles: Type_events <br>
+<br>
+![type](https://user-images.githubusercontent.com/89768557/232321790-14ff40ad-3f66-4c8c-800c-cace9e463509.png)
 
 
+------------------------------------------------------------------------------
+:sparkles:NUTRILAB <BR>
 :sparkles: Email token pelo gmail
 
-:sparkles: Botão de Deletar paciente
+:sparkles: Botão de Deletar paciente!
+
 ![nutrilab_deletar](https://user-images.githubusercontent.com/89768557/216883858-34d43a32-96bb-45b4-8aff-ebce5c8f6bd6.png)
 
 
