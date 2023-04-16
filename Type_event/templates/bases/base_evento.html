@@ -34,12 +34,20 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="">Meus eventos</a></li>
-                        <li><a class="dropdown-item" href="">Meus certificados</a></li>
+                        <li><a class="dropdown-item" href="{% url 'meus_certificados'%}">Meus certificados</a></li>
                     </ul>
                 </li>
+                
+
             </ul>
+            
+            
+            </div>
+            <div class="align-self-end ml-auto">
+            <a href = "{% url 'sair'%}"> <button type="button" class="btn btn-danger">Sair </button> </a>
             </div>
         </div>
+        
     </nav>
 
     <div style="min-height: 60vh">

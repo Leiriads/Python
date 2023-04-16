@@ -49,3 +49,7 @@ def login(request):
         
         auth.login(request, user)#loga no usuario
         return redirect('/eventos/novo_evento/')
+    
+def sair(request):
+    auth.logout(request)
+    return redirect(reverse('login'))

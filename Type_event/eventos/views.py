@@ -2,11 +2,13 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
 
 from .models import Evento
+from .models import Certificado
+
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.messages import constants
 from django.http import Http404 #404 se outro usuario tentar acessar um evento que nao é dele
-from .models import Certificado
+
 
 import csv
 import os
@@ -15,6 +17,13 @@ import os
 from secrets import token_urlsafe
 #acessar os arquivos de midia
 from django.conf import settings
+
+# Certificado
+from io import BytesIO  
+from django.core.files.uploadedfile import InMemoryUploadedFile
+from PIL import Image, ImageDraw, ImageFont
+import sys
+
 
 #super USER Leiriads 123
 # Create your views here.
@@ -120,11 +129,7 @@ def certificados_evento(request, id):
         return render(request, 'certificados_evento.html', { 'qtd_certificados': qtd_certificados,'evento': evento,})
     
     
-# Certificado
-from io import BytesIO  
-from django.core.files.uploadedfile import InMemoryUploadedFile
-from PIL import Image, ImageDraw, ImageFont
-import sys
+
 
 def gerar_certificado(request, id):
     evento = get_object_or_404(Evento, id=id)
@@ -161,3 +166,18 @@ def gerar_certificado(request, id):
     
     messages.add_message(request, constants.SUCCESS, 'Certificados gerados')
     return redirect(reverse('certificados_evento', kwargs={'id': evento.id}))
+
+
+
+def procurar_certificado(request, id):
+    evento = get_object_or_404(Evento, id=id)
+    if not evento.criador == request.user:
+        raise Http404('Esse evento não é seu')
+    email = request.POST.get('email')
+    #.objects busca no banco filtrando
+    certificado = Certificado.objects.filter(evento=evento).filter(participante__email=email).first()
+    if not certificado:
+        messages.add_message(request, constants.WARNING, 'Certificado não encontrado')
+        return redirect(reverse('certificados_evento', kwargs={'id': evento.id}))
+    
+    return redirect(certificado.certificado.url)

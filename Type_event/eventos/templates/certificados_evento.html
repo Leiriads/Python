@@ -39,7 +39,7 @@
         <div class="row">
             <h5>{{qtd_certificados}} Certificados para serem gerados</h5>   
             {% if qtd_certificados > 0 %}
-                <a href="#" class="btn-principal link" style="width: 40%">GERAR TODOS OS CERTIFICADOS</a>
+                <a href="{% url 'gerar_certificado' evento.id%}" class="btn-principal link" style="width: 40%">GERAR TODOS OS CERTIFICADOS</a>
             {% endif %}         
                 
         </div>
@@ -48,7 +48,7 @@
         <div class="row">
             <h5>Procurar certificado</h5>
             <br>
-            <form action="" method="">
+            <form action="{% url 'procurar_certificado' evento.id %}" method="POST">
                 <input type="email" class="form-control" placeholder="Digite o e-mail" name="email">{% csrf_token %}
                 <br>
                 <input type="submit" value="BUSCAR" class="btn btn-primary">
