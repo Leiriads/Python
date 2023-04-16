@@ -1,6 +1,36 @@
 # Python
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
+
+![certificados6](https://user-images.githubusercontent.com/89768557/232335018-63ca84a4-b68d-455b-a2ad-5e4cbb08ed62.png)
+
+
+
+![participantes5](https://user-images.githubusercontent.com/89768557/232335011-0925e5c3-9b09-437c-9020-c71931876a22.png)
+
+
+![gerar_certificado4](https://user-images.githubusercontent.com/89768557/232335005-94f3b61f-2989-4ca6-9815-b96c67351733.png)
+
+
+
+
+![resumo_evento3](https://user-images.githubusercontent.com/89768557/232335002-53151df8-99f2-4a22-ae6c-41bdf870258c.png)
+
+
+
+![gerenciar_evento2](https://user-images.githubusercontent.com/89768557/232334993-9f3040c5-7400-47c8-9b54-72e630877cfd.png)
+
+
+
+
+
+![registro_evento](https://user-images.githubusercontent.com/89768557/232334981-06a2f74a-e803-4833-9219-18ed33fcce71.png)
+
+
+
+
+
+
 :sparkles: Type_events <br>
 <br>
 
