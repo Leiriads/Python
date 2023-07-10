@@ -64,7 +64,7 @@ def cadastrar_categoria(request):
     nome = request.POST.get('categoria')
     essencial = bool(request.POST.get('essencial'))
 
-    if len(categoria.strip()) == 0 or len(categoria.strip()) == 0:
+    if len(nome.strip()) == 0 or len(nome.strip()) == 0:
         messages.add_message(request, constants.ERROR, 'Preencha o Campo corretamente')
         return redirect('/perfil/gerenciar/')
 
@@ -72,7 +72,6 @@ def cadastrar_categoria(request):
         categoria=nome,
         essencial=essencial
     )
-
 
     categoria.save()
 
