@@ -3,11 +3,10 @@
 
 <h3> Finance Pystack Week 7.0</h3>
 
-
 ![Screenshot from 2023-07-10 19-47-19](https://github.com/Leiriads/Python/assets/89768557/30b22679-45c1-4ebc-a817-8b14b3691c92)
 
 
-![Screenshot from 2023-07-10 19-55-58](https://github.com/Leiriads/Python/assets/89768557/e61d6da0-c552-45fe-8ade-e5e0e31e4edc)
+![Screenshot from 2023-07-10 20-11-11](https://github.com/Leiriads/Python/assets/89768557/543dde57-288a-45d6-bac2-c7ab78b7526f)
 
 
 ![Screenshot from 2023-07-10 19-48-34](https://github.com/Leiriads/Python/assets/89768557/ce871361-a939-4eb3-8e0c-e81961e64ab0)
@@ -23,6 +22,8 @@
 
 
 
+
+![Screenshot from 2023-07-10 20-12-28](https://github.com/Leiriads/Python/assets/89768557/1f9f1799-9641-4240-a819-a9cd6f02b603)
 
 
 
