@@ -1,6 +1,36 @@
 # Python
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
+<h3> Finance Pystack Week 7.0</h3>
+
+
+![Screenshot from 2023-07-10 19-47-19](https://github.com/Leiriads/Python/assets/89768557/30b22679-45c1-4ebc-a817-8b14b3691c92)
+
+
+![Screenshot from 2023-07-10 19-55-58](https://github.com/Leiriads/Python/assets/89768557/e61d6da0-c552-45fe-8ade-e5e0e31e4edc)
+
+
+![Screenshot from 2023-07-10 19-48-34](https://github.com/Leiriads/Python/assets/89768557/ce871361-a939-4eb3-8e0c-e81961e64ab0)
+
+
+![Screenshot from 2023-07-10 19-48-02](https://github.com/Leiriads/Python/assets/89768557/58d80698-46c7-40b4-afea-8903928c696f)
+
+
+![Screenshot from 2023-07-10 19-48-12](https://github.com/Leiriads/Python/assets/89768557/fb97f965-2c55-457e-8dc5-9d935ec7c51b)
+
+
+![Screenshot from 2023-07-10 19-48-20](https://github.com/Leiriads/Python/assets/89768557/708f1785-bdfc-42a6-8c00-19e65185c691)
+
+
+
+
+
+
+
+
+
+
+
 
 ![certificados6](https://user-images.githubusercontent.com/89768557/232335018-63ca84a4-b68d-455b-a2ad-5e4cbb08ed62.png)
 
