@@ -2,6 +2,10 @@
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
 <h3> Finance Pystack Week 7.0</h3>
+:sparkles: Projeto financeiro que visa a gestão de contas do usuário.
+<br>
+
+-implementar login e autenticação
 
 ![Screenshot from 2023-07-10 19-47-19](https://github.com/Leiriads/Python/assets/89768557/30b22679-45c1-4ebc-a817-8b14b3691c92)
 
