@@ -1,6 +1,22 @@
 # Python
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
+
+
+![5](https://github.com/Leiriads/Python/assets/89768557/77c76ec1-249a-4869-aed9-dc05c0145731)
+
+![4](https://github.com/Leiriads/Python/assets/89768557/c47069dd-8a27-48b9-a591-6af63ccc857e)
+
+![3](https://github.com/Leiriads/Python/assets/89768557/1841d720-dbfa-4ef6-94a7-8e82791701c1)
+
+![2](https://github.com/Leiriads/Python/assets/89768557/e83dbca2-50af-4ffa-8c69-e9f606851db2)
+
+![1](https://github.com/Leiriads/Python/assets/89768557/57698952-ebce-4526-b15e-ee4d2f4ea309)
+
+
+
+
+
 <h3> Finance Pystack Week 7.0</h3>
 :sparkles: Projeto financeiro que visa a gestão de contas do usuário.
 <br>
