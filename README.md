@@ -2,7 +2,14 @@
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
 
+:sparkles: VitaLab PSW 8.0  <br>
+<br>
 
+![10](https://github.com/Leiriads/Python/assets/89768557/081792fa-74de-4b10-8466-1f37a7f485ca)
+
+![9](https://github.com/Leiriads/Python/assets/89768557/c8e6e4fb-f2a1-46db-9fce-e39a55df3ea9)
+
+![8](https://github.com/Leiriads/Python/assets/89768557/f74fad26-7611-4fda-be21-1f16f2a32d7a)
 
 ![7](https://github.com/Leiriads/Python/assets/89768557/478ca9fa-1aa5-45a9-8d1b-354a326d372d)
 
