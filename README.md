@@ -3,6 +3,11 @@
 
 
 
+
+![7](https://github.com/Leiriads/Python/assets/89768557/478ca9fa-1aa5-45a9-8d1b-354a326d372d)
+
+![6](https://github.com/Leiriads/Python/assets/89768557/dd43a517-6e16-4c44-aec5-192bb371cbb8)
+
 ![5](https://github.com/Leiriads/Python/assets/89768557/77c76ec1-249a-4869-aed9-dc05c0145731)
 
 ![4](https://github.com/Leiriads/Python/assets/89768557/c47069dd-8a27-48b9-a591-6af63ccc857e)
