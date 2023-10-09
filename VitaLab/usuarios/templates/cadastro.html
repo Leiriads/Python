@@ -1,0 +1,70 @@
+{% extends "bases/base.html" %}
+{% load static %}
+
+{% block 'head' %}
+
+<link href="{% static 'usuarios/css/css.css' %}" rel="stylesheet">
+
+{% endblock 'head' %}
+
+
+
+{% block 'conteudo' %}
+    <br>
+    <br>
+    <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {{message.tags}}"> {{message}}</div>
+            {% endfor%}
+        {% endif %}
+        <h3 class="font-destaque">Cadastre-se</h3>
+
+        <div class="row">
+            <div class="col-md-3" style="text-align: center">
+                <img src="{% static 'geral/img/logo.png' %}" alt="">
+                <h3>VitaLab</h3>
+            </div>
+
+            <div class="col-md-9">
+                <form action="{% url 'cadastro'%}" method="POST"> {% csrf_token %}
+                <label>Primeiro nome</label>
+                <br>
+                <input type="text" class="input-default" name="primeiro_nome">
+                <br>
+                <br>
+                <label>Último nome</label>
+                <br>
+                <input type="text" class="input-default" name="ultimo_nome">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <label>Username</label>
+                <br>
+                <input type="text" class="input-default w100" name="username">
+                <br>
+                <br>
+                <label>Senha</label>
+                <br>
+                <input type="password" class="input-default w100" name="senha">
+            </div>
+
+            <div class="col-md-4">
+                <label>E-mail</label>
+                <br>
+                <input type="text" class="input-default w100" name="email">
+                <br>
+                <br>
+                <label>Confirmar senha</label>
+                <br>
+                <input type="password" class="input-default w100" name="confirmar_senha">
+            </div>
+            
+        </div>
+        <br>
+        <input type="submit" class="btn-default" value='Cadastrar'>
+    </form>
+    </div>
+{% endblock %}

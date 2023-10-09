@@ -97,7 +97,7 @@
                     </div>
                     <hr class="hr-borda">
                     <span class="fonte-destaque">Total livre</span>
-                    <span class="font-light negativo">R$ 0.000,00</span>
+                    <span class="font-light negativo">R$ {{total_contas}}</span>
                     <hr class="hr-borda">
                     <a href="#" class="botao-principal">Gerenciar dados mensais</a>
                 </div>
@@ -112,9 +112,11 @@
                         <span class="fonte-destaque">Planejamento</span>
                     </div>
                     <hr class="hr-borda">
-                    <a href="{% url 'definir_planejamento' %}" class="botao-principal">Definir planejamento</a>
+                    <a href="{% url 'definir_planejamento' %}" class="botao-principal">Definir Planejamento</a>
                     <hr>
-                    <a href="{% url 'ver_planejamento' %}" class="botao-principal">Ver planejamento</a>
+                    <a href="{% url 'ver_planejamento' %}" class="botao-principal">Ver Planejamento</a>
+                    <hr>
+                    <a href="{% url 'view_extrato' %}" class="botao-principal">Ver Extrato</a>
                 </div>
             </div>
             <div class="col-md-8">
@@ -149,10 +151,10 @@
                     <hr class="hr-borda">
 
                     <span class="fonte-destaque">Próximas do vencimento</span>
-                    <span class="fonte-light">3 contas próximas do vencimento</span>
+                    <span class="fonte-light">{{contar_contas_p_vencer}} contas próximas do vencimento</span>
                     <br>
                     <span class="fonte-destaque negativo">Vencidas</span>
-                    <span class="fonte-light">0 contas vencidas</span>
+                    <span class="fonte-light">{{quantidade_contas_vencidas}} contas vencidas </span>
 
                     <hr class="hr-borda">
                     
