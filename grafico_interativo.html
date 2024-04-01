@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gráfico Interativo</title>
+<style>
+    .grafico {
+        position: relative;
+        width: 900px;
+        height: 500px;
+        border: 1px solid #ccc;
+    }
+
+    .ponto {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        cursor: pointer;
+    }
+
+    .linhas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+        background-color: white;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="grafico">
+    <svg id="linhas" class="linhas"></svg>
+    <div class="ponto" style="left: 54px; top: 151px;" onclick="abrirModal('Alice')">Alice</div>
+    <div class="ponto" style="left: 130px; top: 151px;" onclick="abrirModal('Bob')">Bob</div>
+    <div class="ponto" style="left: 321px; top: 151px;" onclick="abrirModal('Charlie')">Charlie</div>
+    <div class="ponto" style="left: 514px; top: 151px;" onclick="abrirModal('David')">David</div>
+    <div class="ponto" style="left: 807px; top: 267px;" onclick="abrirModal('Eve')">Eve</div>
+    <div class="ponto" style="left: 518px; top: 401px;" onclick="abrirModal('Frank')">Frank</div>
+    <div class="ponto" style="left: 323px; top: 399px;" onclick="abrirModal('Grace')">Grace</div>
+    <div class="ponto" style="left: 128px; top: 399px;" onclick="abrirModal('Heidi')">Heidi</div>
+    <div class="ponto" style="left: 56px; top: 399px;" onclick="abrirModal('Ivan')">Ivan</div>
+</div>
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="fecharModal()">&times;</span>
+        <p id="modal-text"></p>
+    </div>
+</div>
+<script>
+    function abrirModal(nome) {
+        document.getElementById('modal-text').textContent = nome;
+        document.getElementById('modal').style.display = 'block';
+    }
+
+    function fecharModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+
+    window.onload = function() {
+        var pontos = document.querySelectorAll('.ponto');
+        var linhas = document.getElementById('linhas');
+        var coresLinhas = {{ cores_linhas|safe }};
+        for (var i = 0; i < pontos.length - 1; i++) {
+            var linha = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            linha.setAttribute('x1', parseInt(pontos[i].style.left) + 10);
+            linha.setAttribute('y1', parseInt(pontos[i].style.top) + 10);
+            linha.setAttribute('x2', parseInt(pontos[i + 1].style.left) + 10);
+            linha.setAttribute('y2', parseInt(pontos[i + 1].style.top) + 10);
+            linha.setAttribute('stroke', coresLinhas[i]);  // Usa a cor definida no backend
+            linha.setAttribute('stroke-width', '2');
+            linhas.appendChild(linha);
+        }
+    };
+    
+
+
+</script>
+
+</body>
+</html>
