@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exemplo de Cards com Tabelas</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <style>
+      .copyable,
+.idConsulta {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s, text-decoration-color 0.3s;
+}
+
+.copyable:hover,
+.idConsulta:hover {
+  color: rgb(0, 177, 168);
+  text-decoration-color: rgb(0, 177, 168);;
+}
+        body{background-color:#f8f9fa}
+        .card{
+          margin-bottom:20px;
+          text-align:center;
+          height:35%;
+          overflow:hidden;
+          transition:height .5s linear; /* Alterado de 'ease' para 'linear' */
+        }
+        .card.excedeu{
+          border:2px solid rgba(94,4,102,.432);
+          height:auto!important;
+        }
+        .card-body{
+          max-height:100%;
+          overflow-y:auto
+        }
+        .table{
+          margin-bottom:0;
+          text-align:center;
+          font-size:.8rem
+        }
+        .table td,
+        .table th{
+          padding:.3rem
+        }
+        .btn-ver-mais{
+          margin-top:10px
+        }
+        </style>
+        
+        <div class="d-flex flex-wrap">
+            {% for anel, dados_anel in equipamentos.items %}
+              <div class="col-sm-12 col-md-4 mb-3">
+                <div class="card shadow rounded mx-2" style="height: 300px;">
+                  <div class="card-body">
+                    <h5 class="card-title text-center" style="font-size: 14px;">{{ anel }} ({{ dados_anel.quantidade_equipamentos }} Equipamentos)</h5>
+                    <div class="table-responsive" style="font-size: 12px;">
+                      <table class="table table-sm">
+                        <thead>
+                          <tr>
+                            <th>Equipamento</th>
+                            <th>Status</th>
+                            <th>Tempo Alarme</th>
+                            <th>Ta</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for equipamento in dados_anel.equipamentos %}
+                            <tr>
+                              <td><span class="adjust-font">{{ equipamento.equipamento }}</span></td>
+                            {% if equipamento.alertas %}
+                                {% for alerta in equipamento.alertas %}
+                                    {% if alerta.subject == "EVENTO-INICIADO" and alerta.severity == "Average" %}
+                                    <td style="color: rgb(255, 208, 0);"><i class="fa-solid fa-triangle-exclamation"></i></td>
+                                    {% elif alerta.subject == "EVENTO-NORMALIZADO" %}
+                                    <td style="color: rgb(4, 190, 4);"><i class="fa-solid fa-circle-check"></i></td>
+                                    {% elif alerta.subject == "EVENTO-INICIADO" %}
+                                    <td style="color: red;"><i class="fa-solid fa-skull-crossbones"></i></td>
+                                    {% endif %}
+                                {% endfor %}
+                                <td>{{ equipamento.alertas.0.clock }}</td>
+                              {% else %}
+                                <td>Não há alertas</td>
+                                <td>N/A</td>
+                              {% endif %}
+                              <td>
+                                <div class="container">
+                                    
+                                    {% if equipamento.ids_consultas %}
+                                        {% for id_consulta in equipamento.ids_consultas %}
+                                            <span class="idConsulta" style="cursor: pointer;">{{ id_consulta }}</span>{% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    {% else %}
+                                        <span>-</span>
+                                    {% endif %}
+                                  </div>
+                              </td>
+                            </tr>
+                            {% endfor %}
+                            
+                        </tbody>
+                      </table>
+                    </div>
+                    
+
+                    
+                  </div>
+                    {% if  dados_anel.quantidade_equipamentos > 5 %}
+                        <button class="btn btn-sm btn-primary btn-ver-mais">Ver mais</button>
+                    {% endif %}
+                </div>
+              </div>
+              {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                <div class="w-100"></div> <!-- Criar uma nova linha a cada 3 cards -->
+              {% endif %}
+            {% endfor %}
+          </div>
+          
+    
+    
+          <script>
+            const idConsultas = document.querySelectorAll('.idConsulta');
+    idConsultas.forEach(idConsulta => {
+      idConsulta.addEventListener('click', copyText);
+    });
+    
+    function copyText(event) {
+      const textToCopy = event.target.innerText;
+      navigator.clipboard.writeText(textToCopy).then(function() {
+        showCopySuccess(event, textToCopy);
+      }, function(err) {
+        console.error('Failed to copy text: ', err);
+      });
+    }
+    
+    function showCopySuccess(event, textToCopy) {
+  const alertElement = document.createElement('div');
+  alertElement.className = 'alert alert-success';
+  alertElement.setAttribute('role', 'alert');
+  alertElement.innerText = `Ta Copiada : ${textToCopy}`;
+  alertElement.style.position = 'absolute'; // Define a posição como absoluta
+  alertElement.style.top = `${event.clientY}px`;
+  alertElement.style.left = `${event.clientX}px`;
+  alertElement.style.zIndex = '9999'; // Define o z-index como 9999 para garantir que fique acima de outros elementos
+  document.body.appendChild(alertElement);
+  alertElement.style.display = 'block';
+  setTimeout(function() {
+    alertElement.style.display = 'none';
+    alertElement.remove();
+  }, 1000);
+}
+
+    
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.btn-ver-mais').click(function() {
+            $(this).closest('.card').toggleClass('excedeu');
+            if ($(this).text() === 'Ver mais') {
+                $(this).text('Ver menos');
+            } else {
+                $(this).text('Ver mais');
+            }
+        });
+    });
+    
+</script>
+</body>
+</html>
